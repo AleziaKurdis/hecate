@@ -4,6 +4,7 @@
 //
 //  Created by Alezia Kurdis, April 22th, 2021.
 //  Copyright 2021 Vircadia and contributors.
+//  Copyright 2024 Overte e.V.
 //
 //  Application to reach the serverless Goto app.
 //
