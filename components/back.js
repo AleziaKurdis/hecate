@@ -4,6 +4,7 @@
 //
 //  Created by Alezia Kurdis, May 2nd, 2021.
 //  Copyright 2021 Vircadia and contributors.
+//  Copyright 2024 Overte e.V.
 //
 //  3d portals to go back.
 //

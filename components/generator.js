@@ -4,6 +4,7 @@
 //
 //  Created by Alezia Kurdis, April 16th, 2021.
 //  Copyright 2021 Vircadia and contributors.
+//  Copyright 2024 Overte e.V.
 //
 //  Generate a 3d portals in-world based on the places api.
 //
@@ -13,7 +14,7 @@
 (function(){ 
 
     //Fetch Data from Places API
-    var placeApiUrl = "https://metaverse.vircadia.com/live/api/v1/places?current_page=1&per_page=1000";
+    var placeApiUrl = "https://mv.overte.org/server/api/v1/places?current_page=1&per_page=1000";
     var placesHttpRequest = null;
     var placesData;
     var portalList = [];
@@ -25,7 +26,7 @@
     var hecateBuildingdModelUrl = ROOT + "hecate_Building_Wothal-B.fbx";
     var hecateAirSoundUrl = ROOT + "air.mp3";
     var airSound;
-    var airSoundInjector = Uuid.NULL;
+    var airSoundInjector = Uuid.NONE;
     var AIR_SOUND_VOLUME = 0.3;
     var hecateSkyUrl = ROOT + "sky.jpg";     
     var hecateMetalNormalUrl = ROOT + "metalNormal512c.jpg";
@@ -35,7 +36,7 @@
     var backScriptUrl = ROOT + "back.js";
     var installScriptUrl = ROOT + "install.js";
     var installImageUrl = ROOT + "install.jpg";
-    var thisEntity = Uuid.NULL;
+    var thisEntity = Uuid.NONE;
     var positionZero;
     var placeHistorySettingValue;
     var placeHistorySettingName = "3D_GOTO_PLACES_HISTORY";
@@ -1121,7 +1122,7 @@
     }
 
     this.unload = function(entityID) {
-        if (airSoundInjector !== Uuid.NULL) {
+        if (airSoundInjector !== Uuid.NONE) {
             airSoundInjector.stop();
         }
     };  

@@ -4,6 +4,7 @@
 //
 //  Created by Alezia Kurdis, May 9th, 2021.
 //  Copyright 2021 Vircadia and contributors.
+//  Copyright 2024 Overte e.V.
 //
 //  Install the 3D Goto application when clicked.
 //
