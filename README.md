@@ -1,5 +1,5 @@
 # hecate
-VR Goto Application for Vircadia (Project Hecate)
+VR-3D Goto Application for Overte (Project Hecate)
 
 INSTALLATION:
 
