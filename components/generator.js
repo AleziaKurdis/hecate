@@ -654,7 +654,8 @@
             }
             
             var tpColor = [];
-
+            var tpColorBloom = [];
+            
             switch(portalList[i].accessStatus) {
                 case "NOBODY":
                     tpColor = [0.0, 0.6, 1.0 ];
