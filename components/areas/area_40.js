@@ -4,6 +4,7 @@
 //
 //  Created by Alezia Kurdis, June 17th, 2021.
 //  Copyright 2021 Vircadia and contributors.
+//  Copyright 2024 Overte e.V.
 //
 //  Add customized content to a specific area of the 3D Goto (hecate) application.
 //
@@ -17,6 +18,8 @@
     
     var ROOT = Script.resolvePath('').split("area_" + AREA_NO + ".js")[0];
     var CONTENT_BASE_PATH = ROOT + "area_" + AREA_NO + "/";
+    
+    var positionZero;
     
     this.preload = function(entityID) {
 
@@ -81,10 +84,7 @@
             "useOriginalPivot": true
         },"domain");
         
-        
-        
-        
-        
+
         //################### END CONTENT ###################################*/
     };    
 
