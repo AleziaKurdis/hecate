@@ -157,12 +157,10 @@
                         score = score + 4;
                     }
 
-                    if (description === "") {
+                    if (places[i].maturity === "unrated") {
                         score = score + 3;
                     }
 
-
-                    //NEW WAY
                     if (thumbnail.substr(0, 4).toLocaleLowerCase() !== "http" && places[i].maturity === "unrated") {
                         category = "STONE";
                     } else if (thumbnail.substr(0, 4).toLocaleLowerCase() !== "http" && places[i].maturity !== "unrated") {
@@ -172,22 +170,7 @@
                     } else if (thumbnail.substr(0, 4).toLocaleLowerCase() === "http" && places[i].maturity !== "unrated") {
                         category = "SILVER";
                     }
-                    //
 
-/*                    if (thumbnail.substr(0, 4).toLocaleLowerCase() !== "http" && description === "") {
-                        category = "STONE";
-                    } else {
-                        if ( thumbnail.substr(0, 4).toLocaleLowerCase() !== "http" && description !== ""){
-                            category = "IRON";
-                        } else {
-                            if (thumbnail.substr(0, 4).toLocaleLowerCase() === "http" && description === "") {
-                                category = "BRONZE";
-                            } else {
-                                category = "SILVER";
-                            }
-                        }
-                    }*/
-                    
                     if (places[i].current_attendance > 0) {
                         category = "GOLD";
                         if (places[i].domain.num_users >= places[i].domain.capacity && places[i].domain.capacity !== 0) {
