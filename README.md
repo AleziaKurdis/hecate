@@ -3,13 +3,13 @@ VR-3D Goto Application for Overte (Project Hecate)
 
 INSTALLATION:
 
-Simply run this script in Vircadia (Edit > Running Scripts... > From URL): 
+Simply run this script in Overte (Edit > Running Scripts... > From URL): 
 
 https://aleziakurdis.github.io/hecate/app_hecate.js
 
 -----------------------------------------------------------------
 
-**RULES used to display the Portals from the Metaverse server's place API...**
+**RULES used to display the Portals from the Directory server's place API...**
 
 
 **Places that are systematically excluded:**
