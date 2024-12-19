@@ -151,24 +151,16 @@
                     //visibility rules would be here
                         //visibility != "open" and "connections" while connected: score + 2
                         //visibility != "open" while NOT connected: score + 2
-                        //visibility != "open" while NOT connected: score + 2                        
+                        //visibility != "open" while NOT connected: score + 2  
 
                     if ( thumbnail.substr(0, 4).toLocaleLowerCase() !== "http") {
                         score = score + 4;
                     }
 
-                    if (places[i].maturity === "unrated") {
-                        score = score + 3;
-                    }
-
-                    if (thumbnail.substr(0, 4).toLocaleLowerCase() !== "http" && places[i].maturity === "unrated") {
-                        category = "STONE";
-                    } else if (thumbnail.substr(0, 4).toLocaleLowerCase() !== "http" && places[i].maturity !== "unrated") {
-                        category = "IRON";
-                    } else if (thumbnail.substr(0, 4).toLocaleLowerCase() === "http" && places[i].maturity === "unrated") {
-                        category = "BRONZE";
-                    } else if (thumbnail.substr(0, 4).toLocaleLowerCase() === "http" && places[i].maturity !== "unrated") {
+                    if (thumbnail.substr(0, 4).toLocaleLowerCase() === "http") {
                         category = "SILVER";
+                    } else {
+                        category = "BRONZE";
                     }
 
                     if (places[i].current_attendance > 0) {
@@ -581,7 +573,7 @@
             switch(portalList[i].category) {
                 case "GOLD":
                     metallic = 1;
-                    roughness = 0.176;
+                    roughness = 0.16;
                     albedo = [
                         1,
                         0.9372549019607843,
@@ -590,7 +582,7 @@
                     break;
                 case "SILVER":
                     metallic = 1;
-                    roughness = 0.176;
+                    roughness = 0.14;
                     albedo = [
                         0.8627450980392157,
                         0.9215686274509803,
@@ -599,30 +591,8 @@
                     break;
                 case "BRONZE":
                     metallic = 1;
-                    roughness = 0.176;
-                    albedo = [
-                        0.9411764705882353,
-                        0.6941176470588235,
-                        0.5568627450980392
-                    ];
-                    break;
-                case "IRON":
-                    metallic = 1;
-                    roughness = 0.176;
-                    albedo = [
-                        0.4117647058823529,
-                        0.4235294117647059,
-                        0.43137254901960786
-                    ];
-                    break;
-                case "STONE":
-                    metallic = 0.104;
-                    roughness = 0.572;
-                    albedo = [
-                        0.32941176470588235, 
-                        0.2980392156862745, 
-                        0.2
-                    ];
+                    roughness = 0.15;
+                    albedo = [0.278, 0.255, 0.239];
                     break;
                 case "BLUESTEAL":
                     metallic = 1;
@@ -641,7 +611,7 @@
                         0.0,
                         0.0
                     ];
-                    break;                     
+                    break;
             } 
 
             var placeImage = imagePlaceHolderUrl;
