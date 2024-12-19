@@ -468,7 +468,7 @@
                         "textEffectThickness": 0.25,
                         "alignment": "center",
                         "collisionless": true,
-                        "ignoreForCollisions": true                        
+                        "ignoreForCollisions": true
                         },"domain");
                         
                     var backEffectId = Entities.addEntity({
@@ -785,11 +785,11 @@
                 descriptionText = descriptionText + "\n\nMaturity: " + portalList[i].maturity.toUpperCase();
                 
                 if ( portalList[i].category === "RUBY" ) {
-                    descriptionText = "*** FEATURED ***\n\n" + descriptionText;    
+                    descriptionText = "*** FEATURED ***\n\n" + descriptionText;
                 }
                 
                 if ( portalList[i].category === "BLUESTEAL" ) {
-                    descriptionText = "* FREQUENTLY VISITED *\n\n" + descriptionText;                     
+                    descriptionText = "* FREQUENTLY VISITED *\n\n" + descriptionText;
                 }
                 
                 var textDescPortalId = Entities.addEntity({
