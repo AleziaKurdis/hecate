@@ -28,14 +28,13 @@ https://aleziakurdis.github.io/hecate/app_hecate.js
   
 3- **GOLD**: At the moment there are users in a place, It get assigned to the GOLD category. It orders them by number of users and then by their natural order in the lower categories.
   
-4- **SILVER**: This category contains the places that have all the required information has been correctly setup. (Having a thumbnail and the maturity different than "unrated").
+4- **SILVER**: This category contains the places that have a thumbnail showing their interest to get visitors.
   
-5- **BRONZE**: This category contains the places that have a thumbnail and but with the maturity "Unrated".
-  
-6- **IRON**: This category contains the places that have no thumbnail but a maturity different than "unrated".
-  
-7- **STONE**: This category contains the places that have no thumbnail and have the maturity "Unrated".
-  
+5- **BRONZE**: This category contains the places that have no thumbnail.
+
+
+**Ordering within each categories:**  
+The ordering within each categories is obtained by a seeded random. The ordering are this way maintained for 5 days before being reshuffled again.
   
   
 **Portals color:**
