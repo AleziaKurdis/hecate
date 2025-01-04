@@ -970,7 +970,7 @@
             },
             "ambientLight": {
                 "ambientIntensity": 0.6,
-                "ambientURL": hecateSkyUrl
+                "ambientURL": hecateSkyUrl,
                 "ambientColor": {
                     "red": colorAmbient[0],
                     "green": colorAmbient[1],
