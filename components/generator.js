@@ -935,8 +935,8 @@
         var n = d.getTime();
         var D29_DAY = 104400000;
         var sunOrientation = (n % D29_DAY) * 2 * Math.PI;
-        var colorSky = hslToRgb(0.618, 1.0, Math.sin(sunOrientation));
-        var colorAmbient = hslToRgb(0.618, 0.7, Math.sin(sunOrientation));
+        var colorSky = hslToRgb(0.618, 1.0, 0.5 + (Math.sin(sunOrientation)/2));
+        var colorAmbient = hslToRgb(0.618, 0.7, 0.5 + (Math.sin(sunOrientation)/2));
         
         
         var skyZoneId = Entities.addEntity({
