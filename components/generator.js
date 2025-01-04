@@ -975,7 +975,7 @@
                     "red": colorAmbient[0],
                     "green": colorAmbient[1],
                     "blue": colorAmbient[2]
-                },
+                }
             },
             "skybox": {
                 "color": {
