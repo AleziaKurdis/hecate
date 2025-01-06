@@ -343,7 +343,7 @@
                         "locked": true,
                         "collisionless": true,
                         "ignoreForCollisions": true
-                    }, "domain");
+                    }, "local");
 
                 coy = coy - STEP_HEIGHT;                
             }
@@ -418,7 +418,7 @@
                         "shape": "Cube",
                         "collisionless": true,
                         "ignoreForCollisions": true
-                        },"domain");
+                        },"local");
                         
                     var tpBackStopperId = Entities.addEntity({                
                         "type": "Box",
@@ -469,7 +469,7 @@
                         "alignment": "center",
                         "collisionless": true,
                         "ignoreForCollisions": true
-                        },"domain");
+                        },"local");
                         
                     var backEffectId = Entities.addEntity({
                         "type": "ParticleEffect",
@@ -535,7 +535,7 @@
                         "spinSpread": 0.17000000178813934,
                         "spinStart": -1.5700000524520874,
                         "spinFinish": 1.5700000524520874
-                    }, "domain");    
+                    }, "local");    
                 }
                 
                 //Install
@@ -561,7 +561,7 @@
                             "imageURL": installImageUrl,
                             "emissive": true,
                             "keepAspectRatio": false
-                        }, "domain");
+                        }, "local");
                     
                 }
                     
@@ -698,7 +698,7 @@
                     "materialData": JSON.stringify(materialDataWalls),
                     "parentID": portalId,
                     "position": Vec3.sum(positionZero, {"x": cox, "y": 1.0, "z": coz})
-                },"domain");
+                },"local");
 
             var materialPortalImageId = Entities.addEntity({
                     "type": "Material",
@@ -713,7 +713,7 @@
                     "materialData": JSON.stringify(materialDataImage),
                     "parentID": portalId,
                     "position": Vec3.sum(positionZero, {"x": cox, "y": 2.0, "z": coz})
-                },"domain");
+                },"local");
                 
             var materialPortalTpId = Entities.addEntity({
                     "type": "Material",
@@ -728,7 +728,7 @@
                     "materialData": JSON.stringify(materialDataTp),
                     "parentID": portalId,
                     "position": Vec3.sum(positionZero, {"x": cox, "y": 3.0, "z": coz})
-                },"domain");
+                },"local");
             
             //NAME text
             var textNamePortalId = Entities.addEntity({
@@ -762,7 +762,7 @@
                 "unlit": true,
                 "textEffectThickness": 0.23999999463558197,
                 "alignment": "center"
-                },"domain");  
+                },"local");  
 
                 //Description text
                 var descriptionText = portalList[i].description;
@@ -826,7 +826,7 @@
                     "unlit": true,
                     "textEffectThickness": 0.25,
                     "alignment": "left"
-                    },"domain");
+                    },"local");
                 
                 if (portalList[i].current_attendance > 0) {
                     var textNbrUserPortalId = Entities.addEntity({
@@ -866,7 +866,7 @@
                         "collisionless": true,
                         "ignoreForCollisions": true,
                         "alignment": "center"
-                        },"domain");                    
+                        },"local");                    
                 }
                 
                 //TP
@@ -875,7 +875,7 @@
                     "address": portalList[i].address
                 };
                 
-                var tpPortalId = Entities.addEntity({                
+                var tpPortalId = Entities.addEntity({
                     "type": "Box",
                     "parentID": portalId,
                     "locked": true,
@@ -905,7 +905,7 @@
                     "shape": "Cube",
                     "collisionless": true,
                     "ignoreForCollisions": true
-                    },"domain");
+                    },"local");
                 
                 if (i === (portalList.length - 1)) {
                     var deadEndId = Entities.addEntity({
@@ -934,9 +934,23 @@
         var d = new Date();
         var n = d.getTime();
         var D29_DAY = 104400000;
-        var sunOrientation = (n % D29_DAY) * 2 * Math.PI;
-        var colorSky = hslToRgb(0.618, 1.0, 0.5 + (Math.sin(sunOrientation)/2));
-        var colorAmbient = hslToRgb(0.618, 0.7, 0.5 + (Math.sin(sunOrientation)/2));
+        var sunOrientation = GetCurrentCycleValue(Math.PI * 2, D29_DAY);
+        var colorSky, colorAmbient;
+        if (sunOrientation < Math.PI/2 || sunOrientation > (3 * Math.PI)/2 ) {
+            if (sunOrientation < Math.PI/2) {
+                colorSky = hslToRgb(0.618, 1.0, sunOrientation/(Math.PI/2));
+                colorAmbient = hslToRgb(0.618, 0.1, sunOrientation/(Math.PI/2));
+            } else {
+                colorSky = hslToRgb(0.618, 1.0, ((Math.PI * 2) - sunOrientation)/(Math.PI/2));
+                colorAmbient = hslToRgb(0.618, 0.1, ((Math.PI * 2) - sunOrientation)/(Math.PI/2));
+            }
+            colorSky = hslToRgb(0.618, 1.0, 0.5 + (Math.sin(sunOrientation)/2));
+            colorAmbient = hslToRgb(0.618, 0.1, 0.5 + (Math.sin(sunOrientation)/2));
+        } else {
+            colorSky = hslToRgb(0.618, 1.0, 1.0);
+            colorAmbient = hslToRgb(0.618, 1.0, 1.0);
+        }
+
         
         
         var skyZoneId = Entities.addEntity({
@@ -1101,6 +1115,17 @@
             airSoundInjector.stop();
         }
     };  
+
+    // ################## CYLCE AND TIME FUNCTIONS ###########################
+    function GetCurrentCycleValue(cyclelength, cycleduration){
+		var today = new Date();
+		var TodaySec = today.getTime()/1000;
+		var CurrentSec = TodaySec%cycleduration;
+		
+		return (CurrentSec/cycleduration)*cyclelength;
+		
+	}    
+    // ################## END CYLCE AND TIME FUNCTIONS ###########################   
 
     /*
      * Converts an HSL color value to RGB. Conversion formula
