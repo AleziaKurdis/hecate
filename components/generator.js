@@ -343,7 +343,7 @@
                         "locked": true,
                         "collisionless": true,
                         "ignoreForCollisions": true
-                    }, "local");
+                    }, "domain");
 
                 coy = coy - STEP_HEIGHT;                
             }
@@ -418,7 +418,7 @@
                         "shape": "Cube",
                         "collisionless": true,
                         "ignoreForCollisions": true
-                        },"local");
+                        },"domain");
                         
                     var tpBackStopperId = Entities.addEntity({                
                         "type": "Box",
@@ -469,7 +469,7 @@
                         "alignment": "center",
                         "collisionless": true,
                         "ignoreForCollisions": true
-                        },"local");
+                        },"domain");
                         
                     var backEffectId = Entities.addEntity({
                         "type": "ParticleEffect",
@@ -535,7 +535,7 @@
                         "spinSpread": 0.17000000178813934,
                         "spinStart": -1.5700000524520874,
                         "spinFinish": 1.5700000524520874
-                    }, "local");    
+                    }, "domain");    
                 }
                 
                 //Install
@@ -561,7 +561,7 @@
                             "imageURL": installImageUrl,
                             "emissive": true,
                             "keepAspectRatio": false
-                        }, "local");
+                        }, "domain");
                     
                 }
                     
@@ -666,7 +666,7 @@
                         "emissiveMap": placeImage,
                         "cullFaceMode":"CULL_BACK",
                         "model":"hifi_pbr"
-                    }                
+                    }
                ]
             };
 
@@ -698,7 +698,7 @@
                     "materialData": JSON.stringify(materialDataWalls),
                     "parentID": portalId,
                     "position": Vec3.sum(positionZero, {"x": cox, "y": 1.0, "z": coz})
-                },"local");
+                },"domain");
 
             var materialPortalImageId = Entities.addEntity({
                     "type": "Material",
@@ -713,7 +713,7 @@
                     "materialData": JSON.stringify(materialDataImage),
                     "parentID": portalId,
                     "position": Vec3.sum(positionZero, {"x": cox, "y": 2.0, "z": coz})
-                },"local");
+                },"domain");
                 
             var materialPortalTpId = Entities.addEntity({
                     "type": "Material",
@@ -728,7 +728,7 @@
                     "materialData": JSON.stringify(materialDataTp),
                     "parentID": portalId,
                     "position": Vec3.sum(positionZero, {"x": cox, "y": 3.0, "z": coz})
-                },"local");
+                },"domain");
             
             //NAME text
             var textNamePortalId = Entities.addEntity({
@@ -762,7 +762,7 @@
                 "unlit": true,
                 "textEffectThickness": 0.23999999463558197,
                 "alignment": "center"
-                },"local");  
+                },"domain");  
 
                 //Description text
                 var descriptionText = portalList[i].description;
@@ -826,7 +826,7 @@
                     "unlit": true,
                     "textEffectThickness": 0.25,
                     "alignment": "left"
-                    },"local");
+                    },"domain");
                 
                 if (portalList[i].current_attendance > 0) {
                     var textNbrUserPortalId = Entities.addEntity({
@@ -866,7 +866,7 @@
                         "collisionless": true,
                         "ignoreForCollisions": true,
                         "alignment": "center"
-                        },"local");                    
+                        },"domain");
                 }
                 
                 //TP
@@ -905,7 +905,7 @@
                     "shape": "Cube",
                     "collisionless": true,
                     "ignoreForCollisions": true
-                    },"local");
+                    },"domain");
                 
                 if (i === (portalList.length - 1)) {
                     var deadEndId = Entities.addEntity({
@@ -924,11 +924,10 @@
                         },
                         "shapeType": "static-mesh",
                         "modelURL": hecateDeadEndModelUrl,
-                        "useOriginalPivot": true                
-                        }, "domain");    
+                        "useOriginalPivot": true
+                        }, "domain");
                 }
 
-                    
         } 
          
         var d = new Date();
@@ -1114,6 +1113,8 @@
         if (airSoundInjector !== Uuid.NONE) {
             airSoundInjector.stop();
         }
+        
+        //clean the mess ..delete everything
     };  
 
     // ################## CYLCE AND TIME FUNCTIONS ###########################
